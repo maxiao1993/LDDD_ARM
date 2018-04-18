@@ -1,4 +1,4 @@
-obj-m :=multi_globalmem.o
+obj-m :=cur_multi_globalmem.o
 CURRENT_PATH := $(shell pwd)
 LINUX_KERNEL := $(shell uname -r)
 LINUX_KERNEL_PATH := /usr/src/linux-headers-$(shell uname -r)

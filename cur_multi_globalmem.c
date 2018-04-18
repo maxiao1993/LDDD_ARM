@@ -47,7 +47,10 @@ struct globalmem_dev *dev = filp->private_data;
 
 switch (cmd) {
 case MEM_CLEAR:
+	mutex_lock(&dev->mutex);
 	memset(dev->mem, 0, GLOBALMEM_SIZE);
+	mutex_unlock(&dev->mutex);
+
 	printk(KERN_INFO "globalmem is set to zero\n");
 	break;
 default:
@@ -67,7 +70,9 @@ static ssize_t globalmem_read(struct file *filp, char __user *buf, size_t size, 
 		return 0;
 	if (count > GLOBALMEM_SIZE - p)		//count is too large.
 		count = GLOBALMEM_SIZE - p;
-
+	
+	mutex_lock(&dev->mutex);
+	
 	if (copy_to_user(buf, dev->mem + p, count)) {
 		ret = -EFAULT;
 	} else {
@@ -76,8 +81,10 @@ static ssize_t globalmem_read(struct file *filp, char __user *buf, size_t size, 
 
 		printk(KERN_INFO "read %u bytes(s) from %lu\n", count, p);
 	}
-
-return ret;
+	
+	mutex_unlock(&dev->mutex);
+	
+	return ret;
 }
 
 static ssize_t globalmem_write (struct file *filp, const char __user *buf, size_t size, loff_t *ppos)
@@ -92,6 +99,8 @@ static ssize_t globalmem_write (struct file *filp, const char __user *buf, size_
 	if (count > GLOBALMEM_SIZE - p)
 		count = GLOBALMEM_SIZE - p;
 
+	mutex_lock(&dev->mutex);
+
 	if (copy_from_user(dev->mem + p, buf, count))
 		ret = -EFAULT;
 	else {
@@ -100,6 +109,8 @@ static ssize_t globalmem_write (struct file *filp, const char __user *buf, size_
 
 		printk(KERN_INFO "write %u bytes(s) from %lu\n", count, p);
 	}
+
+	mutex_unlock(&dev->mutex);
 
 	return ret;
 }

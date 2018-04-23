@@ -9,3 +9,5 @@ LDDD means Linux device driver develepment.
 RCU可以看作读写锁的高性能版本，相比读写锁，RCU的优点在于既允许许多个读操作单元同时访问被保护的数据，又允许多个读执行单元和多个写执行单元同时访问被抱回的数据。
 
 I went hiking today, so tired.
+
+RCU挂接回调那块简直没没心思看。。。以后要补上啊！

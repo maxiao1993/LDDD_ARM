@@ -11,3 +11,10 @@ RCU可以看作读写锁的高性能版本，相比读写锁，RCU的优点在�
 I went hiking today, so tired.
 
 RCU挂接回调那块简直没没心思看。。。以后要补上啊！
+
+我说，你是人间的四月天，
+
+笑响点亮了四面风。
+
+When you approach, April returns.
+When you smile, the wind blows.

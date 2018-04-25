@@ -18,3 +18,5 @@ RCU挂接回调那块简直没没心思看。。。以后要补上啊！
 
 When you approach, April returns.
 When you smile, the wind blows.
+
+tasklet 工作队列 软中断 线程化irq

@@ -38,3 +38,21 @@ static int second_open(struct inode *inode, struct file *filp)
 
 	return 0;
 }
+
+static int second_release(struct inode *inode, struct file *filp)
+{
+	del_timer(&second_devp->s_timer);
+
+	return 0;
+}
+
+static ssize_t second_read(struct file *filp, char __user *buf, size_t count, loff_t *ppos)
+{
+	int counter;
+
+	counter = atomic_read(&second_devp->counter);
+	if (put_user(counter, (int *)buf))
+		return -EFAULT;
+	else
+		return sizeof(unsigned int);
+}

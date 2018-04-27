@@ -66,7 +66,7 @@ static const struct file_operations second_fops = {
 
 static void second_setup_cdev(struct second_dev *dev, int index)
 {
-	int err, devno = MKDEV(second_mojor, index);
+	int err, devno = MKDEV(second_major, index);
 
 	cdev_init(&dev->cdev, &second_fops);
 	dev->cdev.owner = THIS_MODULE;

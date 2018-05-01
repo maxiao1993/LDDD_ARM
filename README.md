@@ -24,3 +24,5 @@ tasklet 工作队列 软中断 线程化irq
 today, I eat hotpot.
 
 I sleep in a long time.
+
+I almost accomplished the game in the hard mode.

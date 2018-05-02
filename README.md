@@ -26,3 +26,5 @@ today, I eat hotpot.
 I sleep in a long time.
 
 I almost accomplished the game in the hard mode.
+
+so sad!!!

@@ -4,5 +4,4 @@
 
 LDDD means Linux device driver develepment.
 
-sleep a lot
-I'm tortured.
+fix the problem of hello
